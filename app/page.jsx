@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import supabase from '../lib/supabase'
 import Image from 'next/image'
 
-export default function Home() {
+export default function HomePage() {
   const [coffees, setCoffees] = useState([])
   const [categories, setCategories] = useState(['All'])
   const [activeCat, setActiveCat] = useState('All')
