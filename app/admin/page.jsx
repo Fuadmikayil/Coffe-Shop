@@ -292,8 +292,39 @@ export default function AdminPage() {
                   </datalist>
                 </div>
                 
-                <input type="number" step="0.01" placeholder="Qiymət (AZN)" value={coffeeForm.price} onChange={e => setCoffeeForm(f => ({ ...f, price: e.target.value }))} className={inputStyles} required/>
-                <input type="number" placeholder="Kalori" value={coffeeForm.calories} onChange={e => setCoffeeForm(f => ({ ...f, calories: e.target.value }))} className={inputStyles} required/>
+                {/* === DƏYİŞİKLİK BURADADIR (QIYMƏT) === */}
+                <input 
+                    type="text" // type="number" əvəzinə "text" istifadə edirik ki, tam nəzarət bizdə olsun
+                    inputMode="decimal" // Mobil cihazlarda rəqəm klaviaturasını göstərir
+                    placeholder="Qiymət (AZN)" 
+                    value={coffeeForm.price} 
+                    onChange={e => {
+                        const val = e.target.value;
+                        // Yalnız rəqəmlərə və bir nöqtəyə icazə veririk
+                        if (/^[0-9]*\.?[0-9]*$/.test(val)) {
+                           setCoffeeForm(f => ({ ...f, price: val }))
+                        }
+                    }} 
+                    className={inputStyles} 
+                    required
+                />
+
+                {/* === DƏYİŞİKLİK BURADADIR (KALORİ) === */}
+                <input 
+                    type="text" // type="number" əvəzinə "text" istifadə edirik ki, tam nəzarət bizdə olsun
+                    inputMode="numeric" // Mobil cihazlarda rəqəm klaviaturasını göstərir
+                    placeholder="Kalori" 
+                    value={coffeeForm.calories} 
+                    onChange={e => {
+                        const val = e.target.value;
+                        // Yalnız rəqəmlərə icazə veririk (nöqtəyə yox)
+                        if (/^[0-9]*$/.test(val)) {
+                           setCoffeeForm(f => ({ ...f, calories: val }))
+                        }
+                    }} 
+                    className={inputStyles} 
+                    required
+                />
                 
                 <div className="md:col-span-2">
                     <textarea placeholder="Təsvir" value={coffeeForm.description} onChange={e => setCoffeeForm(f => ({ ...f, description: e.target.value }))} className={`${inputStyles} h-28`} />
@@ -333,6 +364,7 @@ export default function AdminPage() {
             </form>
         </section>
 
+        {/* The rest of the component remains the same */}
         {/* — Coffee List */}
         <section>
           <h3 className="text-2xl font-bold text-gray-800 mb-6">Mövcud Məhsullar</h3>
@@ -361,7 +393,8 @@ export default function AdminPage() {
         </section>
 
         <div className="grid md:grid-cols-2 gap-8">
-            {/* — Sizes Section */}
+            {/* — Sizes Section and Extras Section (no changes needed here) */}
+             {/* — Sizes Section */}
             <section className="bg-white/70 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-amber-100">
                 <h2 className="text-2xl font-semibold mb-4 text-gray-700">Ölçüləri İdarə Et</h2>
                 <form onSubmit={submitSize} className="grid grid-cols-2 md:grid-cols-4 items-end gap-3 mb-6">
