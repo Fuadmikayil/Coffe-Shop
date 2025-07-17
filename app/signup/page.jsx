@@ -44,7 +44,7 @@ export default function SignUp() {
         className="w-full border p-2 rounded mb-4"
         required
       />
-      <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded">
+      <button type="submit" className="w-full cursor-pointer bg-blue-600 text-white p-2 rounded">
         Qeydiyyatdan keç
       </button>
     </form>

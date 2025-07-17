@@ -234,7 +234,7 @@ export default function AdminPage() {
   
   // Style Definitions
   const inputStyles = "block w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 text-sm transition-shadow duration-200";
-  const buttonStyles = "flex items-center justify-center gap-2 bg-amber-800 text-white p-3 rounded-xl font-semibold hover:bg-amber-900 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
+  const buttonStyles = "flex  cursor-pointer items-center justify-center gap-2 bg-amber-800 text-white p-3 rounded-xl font-semibold hover:bg-amber-900 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
   
   // Loading Spinner
   if (loading) return (
@@ -259,7 +259,7 @@ export default function AdminPage() {
               <p className="text-amber-700 mt-1">Coffee Shop məhsullarını buradan idarə edin.</p>
             </div>
             <button
-                className="flex items-center gap-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all"
+                className="flex cursor-pointer items-center gap-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all"
                 onClick={async () => {
                     await supabase.auth.signOut()
                     router.replace('/login')
@@ -356,7 +356,7 @@ export default function AdminPage() {
                         {coffeeForm.id ? 'Dəyişiklikləri Yadda Saxla' : 'Əlavə Et'}
                     </button>
                     {coffeeForm.id && (
-                        <button type="button" onClick={resetCoffeeForm} className="flex-1 bg-gray-200 text-gray-800 p-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+                        <button type="button" onClick={resetCoffeeForm} className="flex-1 cursor-pointer bg-gray-200 text-gray-800 p-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
                             Ləğv et
                         </button>
                     )}
@@ -402,7 +402,7 @@ export default function AdminPage() {
                     <div className="col-span-2 md:col-span-1"><label className="text-xs font-semibold text-gray-500">Ad</label><input placeholder="Kiçik" value={sizeForm.label} onChange={e => setSizeForm(f => ({ ...f, label: e.target.value }))} className={inputStyles} required/></div>
                     <div><label className="text-xs font-semibold text-gray-500">Faktor</label><input type="number" step="0.1" value={sizeForm.factor} onChange={e => setSizeForm(f => ({ ...f, factor: e.target.value }))} className={inputStyles} required/></div>
                     <div><label className="text-xs font-semibold text-gray-500">Sıra</label><input type="number" value={sizeForm.sort_order} onChange={e => setSizeForm(f => ({ ...f, sort_order: e.target.value }))} className={inputStyles} required/></div>
-                    <button className="col-span-full bg-teal-600 text-white p-3 mt-2 rounded-lg font-semibold hover:bg-teal-700 h-full flex items-center justify-center gap-2 transition-colors">
+                    <button className="col-span-full cursor-pointer bg-teal-600 text-white p-3 mt-2 rounded-lg font-semibold hover:bg-teal-700 h-full flex items-center justify-center gap-2 transition-colors">
                         {sizeForm.isEdit ? 'Yadda Saxla' : <><Plus size={18}/> Yeni Ölçü</>}
                     </button>
                 </form>
@@ -411,8 +411,8 @@ export default function AdminPage() {
                         <li key={s.key} className="flex justify-between items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
                             <span className="text-gray-700 font-medium">{s.label} ({s.key}) &mdash; <span className="text-sm text-gray-500">Faktor: {s.factor} | Sıra: {s.sort_order}</span></span>
                             <div className="flex items-center gap-3">
-                                <button onClick={() => editSize(s)} className="text-sm text-blue-600 hover:text-blue-800 font-medium"><Edit3 size={16}/></button>
-                                <button onClick={() => deleteSize(s.key)} className="text-sm text-red-600 hover:text-red-800 font-medium"><Trash2 size={16}/></button>
+                                <button onClick={() => editSize(s)} className="text-sm cursor-pointer text-blue-600 hover:text-blue-800 font-medium"><Edit3 size={16}/></button>
+                                <button onClick={() => deleteSize(s.key)} className="text-sm cursor-pointer text-red-600 hover:text-red-800 font-medium"><Trash2 size={16}/></button>
                             </div>
                         </li>
                     ))}
@@ -426,7 +426,7 @@ export default function AdminPage() {
                     <div className="col-span-2 md:col-span-1"><label className="text-xs font-semibold text-gray-500">Ad</label><input placeholder="Süd" value={extraForm.name} onChange={e => setExtraForm(f => ({ ...f, name: e.target.value }))} className={inputStyles} disabled={extraForm.isEdit} required/></div>
                     <div><label className="text-xs font-semibold text-gray-500">Qiymət</label><input type="number" step="0.01" value={extraForm.price} onChange={e => setExtraForm(f => ({ ...f, price: e.target.value }))} className={inputStyles} required/></div>
                     <div><label className="text-xs font-semibold text-gray-500">Sıra</label><input type="number" value={extraForm.sort_order} onChange={e => setExtraForm(f => ({ ...f, sort_order: e.target.value }))} className={inputStyles} required/></div>
-                    <button className="col-span-full bg-indigo-600 text-white p-3 mt-2 rounded-lg font-semibold hover:bg-indigo-700 h-full flex items-center justify-center gap-2 transition-colors">
+                    <button className="col-span-full cursor-pointer bg-indigo-600 text-white p-3 mt-2 rounded-lg font-semibold hover:bg-indigo-700 h-full flex items-center justify-center gap-2 transition-colors">
                         {extraForm.isEdit ? 'Yadda Saxla' : <><Plus size={18}/> Yeni Əlavə</>}
                     </button>
                 </form>
@@ -435,8 +435,8 @@ export default function AdminPage() {
                         <li key={x.name} className="flex justify-between items-center p-3 rounded-lg hover:bg-gray-100 transition-colors">
                             <span className="text-gray-700 font-medium">{x.name} &mdash; <span className="text-sm text-gray-500">{x.price} AZN | Sıra: {x.sort_order}</span></span>
                             <div className="flex items-center gap-3">
-                                <button onClick={() => editExtra(x)} className="text-sm text-blue-600 hover:text-blue-800 font-medium"><Edit3 size={16}/></button>
-                                <button onClick={() => deleteExtra(x.name)} className="text-sm text-red-600 hover:text-red-800 font-medium"><Trash2 size={16}/></button>
+                                <button onClick={() => editExtra(x)} className="text-sm cursor-pointer text-blue-600 hover:text-blue-800 font-medium"><Edit3 size={16}/></button>
+                                <button onClick={() => deleteExtra(x.name)} className="text-sm cursor-pointer text-red-600 hover:text-red-800 font-medium"><Trash2 size={16}/></button>
                             </div>
                         </li>
                     ))}
